@@ -48,13 +48,17 @@ def model_form_upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             data = handle_uploaded_file(request.FILES['document'])
+            check_user_list = UserData.objects.all()
 
-            for idx, user in enumerate(data):
-                user = UserData.objects.create(**user)
-                user.save()
-            form.author = request.user.username
-            form.save()
-            # return redirect('index')
+            if len(check_user_list) >= 0:
+                for idx, user in enumerate(data):
+                    user = UserData.objects.create(**user)
+                    user.save()
+                form.author = request.user.username
+                form.save()
+                return redirect('index')
+            else:
+                return redirect('index')
             # return reverse_lazy('index')
     else:
         form = DocumentForm()

@@ -5,6 +5,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         <p class="text-center text-bold text-primary pt-4">Hello {{ user.username }} : Welcome to Financepeer</p>
+        <h1 class="lead text-success">{{ status }} </h1>
     {% else %}
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
