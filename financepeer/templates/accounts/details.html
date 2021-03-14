@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<title>{% block title %}Detail{% endblock title %}</title>
+
+{% block content %}
+
+    {% if user_list %}
+
+        <h1 class="lead text-center text-primary font-weight-bold pb-4">Details Of Uploaded File: </h1>
+        <table class="table table-bordered table-striped table-responsive table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>UserId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th class="text-center">Body</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for user in user_list %}
+                    <tr>
+                        <td>{{ user.userId }}</td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.title }}</td>
+                        <td>{{ user.body }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="lead text-warning">No Records Found.</p>
+    {% endif %}
+{% endblock content %}

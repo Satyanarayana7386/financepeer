@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<title>{% block title %}Home{% endblock title %}</title>
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p class="text-center text-bold text-primary pt-4">Hello {{ user.username }} : Welcome to Financepeer</p>
+    {% else %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h1>Welcome To Financepeer</h1>
+            <p class="lead text-left">Financepeer is a for profit-impact solution company founded by IIT/IIM alumni. We are focussed to make quality education available to all</p>
+            <br>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-block">Click here to Login</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}
